@@ -33,7 +33,27 @@ class PolyTreeNode
   end
 
   ########## Searching Part Here ##############
-  
+  def dfs(target)
+    # 1. Check if node is target, if it is return node (base case)
+    # 2. Iterate through node's children
+    #     a. (recursive call)
+    #        dfs(child, target)
+    #        store this result
+    #     b. If our result from (a) is not nil
+    #         that means we got a node back,
+    #           return result.
+    # 3. Return nil (we went through the whole tree and nothing showed up)
+
+    return self if self.value == target # 1
+    self.children.each do |child|   # 2
+      child_res = child.dfs(target)   # 2a
+      return child_res unless child_res.nil? # 2b
+    end
+    return nil # 3
+  end 
+
+  def bfs 
+  end
 
 end
 
