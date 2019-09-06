@@ -26,16 +26,14 @@ class PolyTreeNode
     child.parent = self
   end
 
+  def remove_child(child)
+    raise "Node is not a child" unless self.children.include?(child)
+    # only works since for now, children is a public method.
+    child.parent = nil
+  end
+
+  ########## Searching Part Here ##############
+  
+
 end
 
-#  describe "#add_child" do
-#     it "should pass itself to the child's #parent=" do
-#       expect(node3).to receive(:parent=).with(node2)
-#       node2.add_child(node3)
-#     end
-
-#     it "doesn't add the child twice" do
-#       node2.add_child(node3)
-#       expect(node2.children).to eq([node3])
-#     end
-#   end
