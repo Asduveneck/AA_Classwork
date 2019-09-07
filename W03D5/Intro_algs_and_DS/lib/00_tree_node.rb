@@ -1,3 +1,5 @@
+require "byebug"
+
 class PolyTreeNode
   attr_reader :value, :children, :parent
 
@@ -52,8 +54,43 @@ class PolyTreeNode
     return nil # 3
   end 
 
-  def bfs 
+  def bfs(target)
+    queue = Queue.new
+    queue.enq(self)
+    until queue.empty?
+      next_node = queue.deq
+      return next_node if next_node.value == target 
+      # queue.enqueue(next_node.children)
+      next_node.children.each {|child| queue.enq(child) }
+    end 
+    return nil
   end
 
 end
 
+# class Queue # doesn't do what we want.
+# side effects?
+#   def initialize
+#     @ivar = Array.new
+#   end
+#     # We'll go from left to right.
+#     # add to left side, export/leave the right
+
+#   def enqueue(el) # Adds to left side of array
+#     debugger
+#     @ivar.shift(el)
+#     # self
+#     return;
+#   end
+
+#   def dequeue
+#     @ivar.pop
+#     # self
+#     return;
+#   end
+
+#   def peek # returns, but doesn't remove, the top element in the stack
+#     return @ivar[-1].dup 
+#   end
+
+# end
