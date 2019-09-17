@@ -35,6 +35,19 @@ end
 def larger_than_russia
   # List each country name where the population is larger than 'Russia'.
   execute(<<-SQL)
+    SELECT
+      name
+    FROM
+      countries 
+    WHERE
+      population > (
+      SELECT
+        population   
+      FROM
+        countries 
+      WHERE
+        name = 'Russia'
+      )
   SQL
 end
 
@@ -42,6 +55,21 @@ def richer_than_england
   # Show the countries in Europe with a per capita GDP greater than
   # 'United Kingdom'.
   execute(<<-SQL)
+    SELECT
+      name
+    FROM
+      countries 
+    WHERE
+      (gdp/population) > (
+      SELECT
+        gdp/population
+      FROM
+        countries 
+      WHERE
+        name = 'United Kingdom'
+      ) 
+    AND
+     continent = 'Europe'
   SQL
 end
 
@@ -49,6 +77,19 @@ def neighbors_of_certain_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
   execute(<<-SQL)
+    SELECT
+      name, continent
+    FROM
+      countries 
+    WHERE
+      continent IN (
+      SELECT
+        continent
+      FROM
+        countries 
+      WHERE
+        name IN ('Belize', 'Belgium')
+      )
   SQL
 end
 
@@ -56,14 +97,51 @@ def population_constraint
   # Which country has a population that is more than Canada but less than
   # Poland? Show the name and the population.
   execute(<<-SQL)
+  SELECT
+      name, population
+    FROM
+      countries 
+    WHERE
+      population BETWEEN (
+      SELECT
+        population + 1
+      FROM
+        countries 
+      WHERE
+        name = 'Canada'
+      ) AND (
+      SELECT
+        population - 1
+      FROM
+        countries 
+      WHERE
+        name = 'Poland'
+      )
+      /* Bad people here. Use > and < ... */
   SQL
 end
 
 def sparse_continents
-  # Find every country that belongs to a continent where each country's
-  # population is less than 25,000,000. Show name, continent and
+  # Find every country that belongs to a (continent where each country's
+  # population is less than 25,000,000.) Show name, continent and
   # population.
   # Hint: Sometimes rewording the problem can help you see the solution.
+  # Suggestion: Rewording problems in the firs tplace would make happier students
   execute(<<-SQL)
+  SELECT
+    name, continent, population
+  FROM
+    countries 
+  WHERE
+    continent IN (
+      SELECT
+        continent 
+      FROM
+        countries
+      GROUP BY
+        continent
+      HAVING 
+        MAX(population) < 25*10^6
+    ) 
   SQL
 end
