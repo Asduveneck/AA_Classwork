@@ -53,11 +53,11 @@ INSERT INTO
   toys
   (price, color, name) 
 VALUES 
-  (2.99, 'blue', 'ball'),
-  (4.00, 'red', 'pokeball'),
-  (9.99, 'grey', 'catnip'),
-  (100.00, 'red', 'lazer pointer'),
-  (29.99, 'white', 'fake pizza');
+  (2.99, 'Blue', 'ball'),
+  (4.00, 'Red', 'pokeball'),
+  (9.99, 'Grey', 'catnip'),
+  (100.00, 'Red', 'lazer pointer'),
+  (29.99, 'White', 'fake pizza');
 
 
 INSERT INTO 
@@ -71,7 +71,7 @@ VALUES
     WHERE name = 'Fred'),
     (SELECT id 
     FROM toys 
-    WHERE name = 'ball')
+    WHERE name = 'pokeball')
      ),
   /*  Row 2 */
   ( 
@@ -80,7 +80,7 @@ VALUES
     WHERE name = 'Draco'),
     (SELECT id 
     FROM toys 
-    WHERE name = 'pokeball')
+    WHERE name = 'ball')
      ),
   /*  Row 3 */
   ( 
@@ -89,7 +89,7 @@ VALUES
     WHERE name = 'Nelly'),
     (SELECT id 
     FROM toys 
-    WHERE name = 'catnip')
+    WHERE name = 'lazer pointer')
      ), 
   /*  Row 4 */
   (
@@ -98,7 +98,7 @@ VALUES
     WHERE name = 'Meowth'),
     (SELECT id 
     FROM toys 
-    WHERE name = 'lazer pointer')
+    WHERE name = 'catnip')
      ), 
   /*  Row 5 */
   (
