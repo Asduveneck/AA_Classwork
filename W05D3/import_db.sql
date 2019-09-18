@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS cats
-DROP TABLE IF EXISTS toys /* Hopefully right place here */
-DROP TABLE IF EXISTS cattoys
+DROP TABLE IF EXISTS cattoys;
+DROP TABLE IF EXISTS cats;
+DROP TABLE IF EXISTS toys;
+/* Hopefully right place here */
 
 
 /* 
@@ -29,12 +30,12 @@ CREATE TABLE toys (
 
 CREATE TABLE cattoys (
   id SERIAL PRIMARY KEY,
-  cat_id INTEGER NOT NULL,
-  toy_id INTEGER NOT NULL,
+  cat_id INTEGER,
+  toy_id INTEGER,
   /* FOREIGN KEY CONSTRAINTS */ 
   FOREIGN KEY (cat_id) REFERENCES cats(id),
   FOREIGN KEY (toy_id) REFERENCES toys(id)
-)
+);
 
 
 INSERT INTO
