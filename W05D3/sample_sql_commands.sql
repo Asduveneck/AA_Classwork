@@ -99,7 +99,7 @@ VALUES (
 -- Seems like this is only returning 0 since we have a small table.
 -- Understanding the specifics of our QUERY plan beyond the first line is a whole other field and beyond the scope of this program/class.
 -- First Line: cost. Initial and Final (total) cost to run the operation.
--- Width and Row: memory costs. Width: bytes. 
+-- Width and Row: memory costs. Width: bytes. Rows: rows of memories, not literal rows in the table.
 
 
 
