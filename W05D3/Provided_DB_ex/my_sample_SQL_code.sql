@@ -1,6 +1,8 @@
 ---- Getting into the new database
 
-psql meowtime ...
+psql meowtime 
+
+data/import_cat_db.sh ---- To RESEED
 
 ---- Running the following queries with Explain Analyze
 
