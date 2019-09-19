@@ -130,7 +130,12 @@ def no_apples_for_blair
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL)
-
+  SELECT cats.name 
+  FROM cats
+  JOIN cattoys ON cattoys.cat_id = cats.id 
+  JOIN toys ON toys.id = cattoys.toy_id
+  WHERE toys.name = 'Apple' AND NOT cats.name = 'Blair'
+  ORDER BY cats.name ASC;
   SQL
 end
 
@@ -142,7 +147,16 @@ def no_apples_for_blair_sub
 
   # USE A SUBQUERY
   execute(<<-SQL)
-
+  SELECT DISTINCT cats.name
+  FROM cats
+  WHERE cats.name IN
+    (
+    SELECT cats.name
+    FROM cats
+    JOIN cattoys ON cattoys.cat_id = cats.id
+    JOIN toys ON toys.id = cattoys.toy_id
+    WHERE cats.name != 'Blair' AND toys.name = 'Apple' )
+    ORDER BY cats.name
   SQL
 end
 
@@ -154,6 +168,13 @@ def toys_that_brendon_owns
   # DO NOT USE A SUBQUERY
   execute(<<-SQL)
 
+  SELECT toys.name
+  FROM toys
+  JOIN cattoys ON cattoys.toy_id = toys.id
+  JOIN cats ON cats.id = cattoys.cat_id
+  WHERE cats.name = 'Brendon' 
+  ORDER BY toys.name ASC
+
   SQL
 end
 
@@ -163,6 +184,17 @@ def toys_that_brendon_owns_sub
 
   # USE A SUBQUERY
   execute(<<-SQL)
+
+  SELECT DISTINCT toys.name
+  FROM toys 
+  WHERE toys.id IN (
+    SELECT toys.id
+    FROM toys
+    JOIN cattoys ON cattoys.toy_id = toys.id
+    JOIN cats ON cats.id = cattoys.cat_id
+    WHERE cats.name = 'Brendon' )
+    ORDER BY toys.name ASC
+  
 
   SQL
 end
