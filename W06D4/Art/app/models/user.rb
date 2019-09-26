@@ -25,4 +25,8 @@ class User < ApplicationRecord
         dependent: :destroy,
         through: :artwork_shares, 
         source: :artwork   
+
+    has_many :comments,
+        inverse_of: :author,
+        dependent: :destroy
 end
