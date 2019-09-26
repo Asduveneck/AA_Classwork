@@ -1,1 +1,3 @@
 today's lecture slides: https://github.com/appacademy/bluebird-aug-2019
+
+https://github.com/github/personal-website
