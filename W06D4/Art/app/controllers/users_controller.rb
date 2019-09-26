@@ -9,7 +9,8 @@ class UsersController < ApplicationController
         if user.save
             render json: user
         else
-            render json: "This user has already been made"
+            # render json: "This user has already been made"
+            render json: user.errors.full_messages, status: 422
         end
     end
 
@@ -25,13 +26,13 @@ class UsersController < ApplicationController
 
     def update
         user = User.find(params[:id])
-         if user.update(user_params)
+        if user.update(user_params)
             render json: user
         else
             render json: "This update is invalid"
         end
     end
-
+  Private
     def user_params
         params.require(:user).permit(:username)
     end
