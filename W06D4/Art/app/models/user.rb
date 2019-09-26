@@ -20,4 +20,9 @@ class User < ApplicationRecord
         foreign_key: :artist_id,
         class_name: :Artwork, 
         dependent: :destroy
+
+     has_many :shared_artworks, # thanks bryan!
+        dependent: :destroy,
+        through: :artwork_shares, 
+        source: :artwork   
 end
