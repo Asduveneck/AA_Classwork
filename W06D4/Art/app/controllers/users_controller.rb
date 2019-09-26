@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        users = User.new(user_params)
+        user = User.new(user_params)
         if user.save
             render json: user
         else
@@ -32,8 +32,19 @@ class UsersController < ApplicationController
             render json: "This update is invalid"
         end
     end
-  Private
+
+  private
+
+    # def user_params
+    #     params
+    #     .permit(:username)
+    #     #.require(:user)
+    # end
+
     def user_params
-        params.require(:user).permit(:username)
+        params
+        .require(:user) # we need to send in user[username] for this to work
+        .permit(:username)
     end
+
 end
