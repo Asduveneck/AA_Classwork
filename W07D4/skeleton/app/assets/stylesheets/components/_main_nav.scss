@@ -18,9 +18,9 @@
   margin: 3px;
 }
 
-.left-nav ul i, span:hover{
-  background-color: lightslategray;
-}
+// .left-nav > ul > li:hover{
+//   background-color: lightslategray;
+// }
 
 .right-nav > ul > li {
   font-family: serif;
@@ -30,12 +30,13 @@
 }
 
 .right-nav > ul > li:last-of-type {
-
+  
 }
 
 .left-nav > ul > li:hover,
 .right-nav > ul > li:last-of-type:hover {
-
+  background-color: lightslategray;
+  // 
 }
 
 .left-nav span {
