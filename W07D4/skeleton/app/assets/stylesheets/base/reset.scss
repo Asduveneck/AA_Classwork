@@ -10,23 +10,25 @@ span, article, footer, time, small {
   // border:
   // outline:
   // font:
-  // color:
-  // text-align:
+  color: black;
+  text-align: left;
   // text-decoration:
   // vertical-align:
-  // box-sizing:
-  // background:
+  box-sizing: inherit;
+  background: white;
 }
 
 ol, ul {
-  // list-style:
+  list-style: none; //maybe?
 }
 
 img {
-  // display:
-  // width:
-  // height:
+  display: block;
+  width: 100%;
+  height: auto;
 }
+
+button {cursor: pointer;} 
 
 input[type="password"],
 input[type="email"],
@@ -49,6 +51,11 @@ input[type="submit"] {
 }
 
 /* Clearfix */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 .group:after {
   // ...
