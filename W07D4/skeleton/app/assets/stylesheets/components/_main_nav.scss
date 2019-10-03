@@ -1,14 +1,25 @@
 .main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding:5px;
 
+  
 }
 
 .left-nav > ul,
 .right-nav > ul {
-
+  display: flex;
+  align-content: flex-start;  
 }
 
 .left-nav > ul > li {
+  font-family: serif;
+  font-size: 15px;
+  text-transform: uppercase;
+}
 
+.left-nav ul i, span:hover{
+  background-color: lightslategray;
 }
 
 .right-nav > ul > li {
