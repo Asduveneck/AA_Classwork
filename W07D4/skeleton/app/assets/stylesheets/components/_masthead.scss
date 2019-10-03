@@ -59,6 +59,9 @@
 	background-color: $lightest-gray;
 }
 
+.masthead-links:last-child {
+	border:none;
+}
 .masthead-links a,
 .masthead-links button, 
 .masthead-links time {
@@ -71,4 +74,8 @@
 
 .masthead-links strong {
 	color: green;
+}
+
+#bold_first {
+font-weight: bold;
 }

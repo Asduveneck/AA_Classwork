@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   padding:5px;
-
   
 }
 
@@ -16,6 +15,7 @@
   font-family: serif;
   font-size: 15px;
   text-transform: uppercase;
+  margin: 3px;
 }
 
 .left-nav ul i, span:hover{
@@ -23,7 +23,10 @@
 }
 
 .right-nav > ul > li {
-
+  font-family: serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin: 3px;
 }
 
 .right-nav > ul > li:last-of-type {
