@@ -1,5 +1,5 @@
-<header class="main-nav">
-	<nav class="left-nav">
+<header class="main-nav fa-spin-reverse"> <!--- append to class name: fas fa-spin -->
+	<nav class="left-nav fa-spin">
 		<ul>
 			<li id="sections-sidebar-btn">
 				<i class="fa fa-bars"></i>
@@ -11,7 +11,7 @@
 			</li>
 		</ul>
 	</nav>
-	<nav class = 'right-nav'>
+	<nav class = 'right-nav fa-spin'>
 		<ul>
 			<li id = "subscribe">
 				<button type = "button">Subscribe Now  </button>
@@ -19,8 +19,10 @@
 			<li id="Log In">
 				<button type = "button">Log in</button>
 			</li>
-			<li id = "Settings">
-				<i class="fas fa-cog"></i>
+			<li id = "gear-dropdown">
+				<%= render 'shared/gear_dropdown' %>
+				<i id= "icon" class="fas fa-cog fas fa-spin"></i>
+				<!---<%#= render partial: 'shared/gear_dropdown' %> --->
 			</li>
 		</ul>
 
