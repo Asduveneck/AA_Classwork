@@ -1,6 +1,6 @@
 <ul id="gear-dropdown" class="gear-dropdown">
 	<li>
-		<ul class="editions fas fa-spin">
+		<ul class="editions">
 			<Button class="dropdown-content" id="dd">Edition</Button>
 			<li><a href="#">CSS</a></li>
 			<li><a href="#">HTML</a></li>
@@ -18,10 +18,14 @@
 </ul>
 
 
-<!---
- <Button class="dropdown-content">Edition</Button>
- <Button class="dropdown-content">Help</Button>
 
- <span class="dropdown-subtitle">Edition</span>
- <span class="dropdown-subtitle">Help</span>
- --->
+
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>

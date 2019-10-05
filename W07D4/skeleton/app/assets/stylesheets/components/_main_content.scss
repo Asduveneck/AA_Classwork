@@ -1,0 +1,43 @@
+// .main_display
+// {
+//   display:grid;
+//   grid-template-columns: 20% 45% 35%;
+//   grid-template-rows:auto;
+//   // flex-direction: column;
+//   // align-items: left;
+
+// }
+
+// .launch_curriculum
+// {
+//   grid-column-start: 1;
+//   grid-column-end:2; 
+// }
+
+.col-first_section>.title{
+
+  font-size: 36px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: underline;
+  background-color: blue;
+}
+
+.author{
+  font-size: 12px;
+  color:grey;
+}
+.col-first_section ul{
+  font-size: 14px;
+  font-family: serif;
+  line-height: 1.4;
+  background-color: sienna;
+}
+.col-first_section ul a{
+  text-decoration: underline;
+  color: blue;
+}
+
+// .mid_section {
+//   grid-column-start: 2;
+//   grid-column-end:3;
+// }
