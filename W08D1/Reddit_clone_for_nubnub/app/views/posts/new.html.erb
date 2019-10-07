@@ -1,0 +1,49 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<form action="posts_url" method = "post">
+<input type="hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>"  >
+
+<label for="">Title 
+  <input type="text" name = "post[title]" value = "" >
+</label>
+
+<label for="">URL
+  <input type="text" name = "post[url]" value = "" >
+</label>
+
+<label for="">Content
+  <textarea name="" id="" cols="30" rows="10" name = "post[content]" value = ""> 
+</textarea></label>
+
+
+<label> Placeholder so we count from 1 instead. Why?
+    <input type="checkbox" name="post[sub_ids][]" value = "0">
+</label>
+
+<% Sub.all.each do |sub| %>
+  Eat Fresh
+  
+  <label><%=sub.title%>
+    <input type="checkbox" name="post[sub_ids][]" value = "<%=sub.id%>" >
+  </label>
+<% end %>
+
+
+
+
+
+
+<input type="submit" value = "FARM KARMA NOOBNOOB SUBMIT HERE">
+</form>
+
+
+   Prefix Verb   URI Pattern               Controller#Action
+    posts POST   /posts(.:format)          posts#create
+ new_post GET    /posts/new(.:format)      posts#new
+edit_post GET    /posts/:id/edit(.:format) posts#edit
+     post GET    /posts/:id(.:format)      posts#show
+          PATCH  /posts/:id(.:format)      posts#update
+          PUT    /posts/:id(.:format)      posts#update
+          DELETE /posts/:id(.:format)      posts#destroy
+~/Desktop/AACrap/AA_Classwork/W08D1/Reddit_clone_for_nubnu
