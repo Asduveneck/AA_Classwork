@@ -1,0 +1,55 @@
+User
+
+username
+password_digest (column)
+session_token 
+
+Post
+
+title
+url
+content
+sub_id # sub association (polymorphic) validation must exist
+user_id # author_association 
+
+PostSub
+# belongs_to posts 
+# belongs_to subs
+sub_id 
+post_id
+
+Sub
+title 
+description
+user_id # moderator 
+
+
+Write an edit route where the moderator is allowed to update 
+the title and description.
+
+
+Use a before_action to prohibit non-moderators 
+from editing or updating the Sub.
+
+
+Write posts#editand posts#update controller actions (and routes)
+that only the Post author can use.
+
+
+==================
+QUESTIONS!!!!!!!!!!
+
+++ helen
+Do we nest the subs beneath the users? 
+Because we're creating each sub to have a moderator 
+NO. Because then to access a sub we'd first access the moderator.
+That's annoying.
+++
+
+What do we do with post subs?
+We use them to check associations. 
+So does that mean our postsub controller is what handles requests to/from posts and subs?
+In the views, when we check those input boxes, views, it provides some info. Where we create some post sub 
+
+When we pull up the inspect for the page, it seems that within post, there is a column for sub_ids.
+But I thought we had a PostSub table to handle many-many associations...?
