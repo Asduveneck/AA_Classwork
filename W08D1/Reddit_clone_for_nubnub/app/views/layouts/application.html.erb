@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <%=flash[:errors]%>
+    <%if logged_in?%>
+      <%= current_user.username %>
+      <form action= "<%=session_url%>" method = "post" >
+      <input type="hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>"  >
+
+        <input type="hidden" name = "_method" value = "delete" >
+        <input type="submit" value="Sign Out">
+      </form>
+      <br>
+    <% end %>
     <%= yield %>
+
+    <a href="<%=new_post_url%>">New Post</a>
   </body>
 </html>

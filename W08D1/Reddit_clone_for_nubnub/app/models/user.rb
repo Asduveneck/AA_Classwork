@@ -51,7 +51,7 @@ class User < ApplicationRecord
     self.session_token 
   end 
 
-  before_action :ensure_session_token
+  before_validation :ensure_session_token
   def ensure_session_token
     self.session_token ||= User.gen_st
   end

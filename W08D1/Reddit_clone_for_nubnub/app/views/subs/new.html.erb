@@ -1,2 +1,22 @@
 <h1>Subs#new</h1>
 <p>Find me in app/views/subs/new.html.erb</p>
+
+
+Make New Subs here
+
+<form action="<%= subs_url %>" method="post">
+<input type="hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>"  >
+
+  <label>Title
+    <input type="text" name = "sub[title]">
+  </label>
+
+  <label>Description
+    <input type="text" name = "sub[description]">
+  </label>
+
+  <input type="hidden" name="sub[user_id]" value="<%= current_user.id %>">
+  
+  <input type="submit" value="New Subreddit">
+
+</form>
