@@ -1,7 +1,7 @@
 require 'rack'
 require_relative '../lib/controller_base'
-
-class MyController < ControllerBase
+# We're writing this ControllerBase ourself in lib/controller_base.rb
+class MyController < ControllerBase 
   def go
     if req.path == "/cats"
       render_content("hello cats!", "text/html")
