@@ -1,2 +1,10 @@
 <h1>Subs#show</h1>
 <p>Find me in app/views/subs/show.html.erb</p>
+
+<li> <%= @sub.title %> </li>
+<li> <%= @sub.description %> </li>
+<li> link to edit later </li>
+
+<a href= "<%=new_sub_url%>">Make a new sub here</a>
+<br>
+<a href="<%=subs_url%>">Take me home to all subs</a>

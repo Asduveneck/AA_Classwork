@@ -1,7 +1,8 @@
 <h1>Posts#new</h1>
 <p>Find me in app/views/posts/new.html.erb</p>
 
-<form action="posts_url" method = "post">
+<form action="<%=posts_url%>" method = "post">
+
 <input type="hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>"  >
 
 <label for="">Title 
@@ -13,30 +14,34 @@
 </label>
 
 <label for="">Content
-  <textarea name="" id="" cols="30" rows="10" name = "post[content]" value = ""> 
+  <textarea cols="30" rows="10" name = "post[content]"> 
 </textarea></label>
 
 
-<label> Placeholder so we count from 1 instead. Why?
-    <input type="checkbox" name="post[sub_ids][]" value = "0">
-</label>
 
+<!--  <input type="hidden" name="post[sub_ids][]" value = "0">
+-->
+<br>
+<br>
+<input type="hidden" name="post[sub_ids][]">
 <% Sub.all.each do |sub| %>
-  Eat Fresh
+  <!--- Eat Fresh -->
   
   <label><%=sub.title%>
     <input type="checkbox" name="post[sub_ids][]" value = "<%=sub.id%>" >
+    <br>
   </label>
 <% end %>
 
 
 
 
-
+<br>
 
 <input type="submit" value = "FARM KARMA NOOBNOOB SUBMIT HERE">
 </form>
 
+<!--
 
    Prefix Verb   URI Pattern               Controller#Action
     posts POST   /posts(.:format)          posts#create
@@ -46,4 +51,5 @@ edit_post GET    /posts/:id/edit(.:format) posts#edit
           PATCH  /posts/:id(.:format)      posts#update
           PUT    /posts/:id(.:format)      posts#update
           DELETE /posts/:id(.:format)      posts#destroy
-~/Desktop/AACrap/AA_Classwork/W08D1/Reddit_clone_for_nubnu
+
+-->

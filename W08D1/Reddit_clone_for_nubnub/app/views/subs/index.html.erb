@@ -1,2 +1,10 @@
-<h1>Subs#index</h1>
+<h1> Subs#index</h1>
 <p>Find me in app/views/subs/index.html.erb</p>
+All subs go hereeeeee
+If you don't see this you done goofed
+
+<a href="<%=new_sub_url%>">Make Your Own Sub</a>
+
+<% @subs.each do |sub|%>
+  <li><a href="<%=sub_url(sub)%>">"<%=sub.title%>"</a></li>
+<% end %>

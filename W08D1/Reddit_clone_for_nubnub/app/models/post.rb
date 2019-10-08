@@ -20,7 +20,8 @@ class Post < ApplicationRecord
 
     has_many :postsubs,
       foreign_key: :post_id,
-      class_name: :Postsub
+      class_name: :Postsub,
+      inverse_of: :post
 
     has_many :subs, # so naming convention will let us 
       through: :postsubs,
