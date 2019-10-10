@@ -47,6 +47,18 @@ Board.DIRS = [
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  let row = pos[0];
+  let col = pos[1];
+
+  let currBoard = this;
+  if (currBoard.isValidPos(pos)) {
+    if(currBoard.isOccupied(pos)) {
+      return currBoard.grid[row][col];
+    }
+  } else {
+    throw Error("Not valid pos!");
+  } 
+  // If it's a valid position, but there isn't a piece, return nothing
 };
 
 /**
@@ -103,6 +115,14 @@ Board.prototype.isOver = function () {
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  let row = pos[0];
+  let col = pos[1];
+
+  // checks if any pos is put of bounds
+  if ((row > 7 || col > 7 || row < 0 || col < 0 ) && pos.length === 2) { 
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -119,6 +139,44 @@ Board.prototype.isValidPos = function (pos) {
  * Returns null if no pieces of the opposite color are found.
  */
 function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
+  // Board.DIRS  // This will be used when we CALL _positionsToFlip for the first time
+
+  // Traveling in ONE DIRECTION ONLY. 
+  let positions_flipped = (piecesToFlip || [] );
+  let current_pos = pos;
+  if(!board.isValidPos(current_pos)) { // If NOT a valid position
+    return null;
+  }
+
+  let next_row = pos[0] + dir[0];
+  let next_col = pos[1] + dir[1];
+  let next_pos = [next_row, next_col];
+
+  if (!board.isOccupied(next_pos) ) { // If NOT OCCUPIED (no piece in that direction)
+    // End of the board implies that the next piece is NOT occupied LOL
+    return null;
+  }
+  // So we do have a next piece NOW! :)  
+  let next_piece = board[next_row][next_col];
+
+  // Check if new piece is the same color as ours. 
+  if (next_piece.color === color) {
+    if (piecestoFlip.length === 2) {
+      return null;
+    } else {
+      return piecestoFlip;
+    }
+  }
+  /* No more edge cases. Our next direction we're going in is a different color
+    1. Reassign that next_piece's color.
+    2. Push that position and return it as an array..?
+    3. We call this method again recursively...
+*/
+
+    next_piece.color = color;
+    piecesToFlip.push(next_pos);
+    return _positionsToFlip(board, next_pos, color, dir, piecesToFlip);
+
 }
 
 /**
