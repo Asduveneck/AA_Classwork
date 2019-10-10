@@ -65,17 +65,14 @@ Board.prototype.isMine = function (pos, color) {
     let row = pos[0];
     let col = pos[1];
 
-    // If the piece is undefined, we should return nil early
-    // to catch the error
-    if (!this.grid[row][col]) { // some way to find a falsey value
-      return "";
+    if (this.isOccupied(pos)) { //if piece exists
+      if (this.grid[row][col].color === color) {
+        return true;
+      }
+      return false;
     }
+    // return falsy
 
-    if( this.grid[row][col].color === color) {
-      return true;
-      
-    }
-    return false;
 };
 
 /**
