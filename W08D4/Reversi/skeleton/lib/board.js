@@ -11,7 +11,7 @@ function _makeGrid () {
   https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
   */
  // const grid = [];
- grid = [];
+ let grid = [];
   for (let index = 0; index < 8; index++) {
     const row = new Array(8);
     grid.push(row);
@@ -65,10 +65,15 @@ Board.prototype.isMine = function (pos, color) {
     let row = pos[0];
     let col = pos[1];
 
-      console.log("Can you hear me out here");
-    if(grid[row][col] === color) {
-      console.log("Can you hear me inside here");
+    // If the piece is undefined, we should return nil early
+    // to catch the error
+    if (!this.grid[row][col]) { // some way to find a falsey value
+      return "";
+    }
+
+    if( this.grid[row][col].color === color) {
       return true;
+      
     }
     return false;
 };
@@ -77,6 +82,17 @@ Board.prototype.isMine = function (pos, color) {
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+
+  let row = pos[0];
+  let col = pos[1];
+
+  if (!this.grid[row][col]) { // some way to find a falsey value
+    return false;
+  }
+  else {
+    return true;
+  }
+
 };
 
 /**
