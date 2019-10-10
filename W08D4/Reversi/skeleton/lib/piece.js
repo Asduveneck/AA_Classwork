@@ -2,6 +2,10 @@
  * Initializes the Piece with its color.
  */
 function Piece (color) {
+  let possible_colors = ['white', 'black'];
+  if(possible_colors.includes(color)) {
+    this.color = color; 
+  }
 }
 
 /**

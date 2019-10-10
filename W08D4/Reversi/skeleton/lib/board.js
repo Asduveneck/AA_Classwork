@@ -5,6 +5,28 @@ let Piece = require("./piece");
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  /*
+  Make a 2d array
+  array of length 8
+  https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
+  */
+ // const grid = [];
+ grid = [];
+  for (let index = 0; index < 8; index++) {
+    const row = new Array(8);
+    grid.push(row);
+  };
+
+  /*
+    Prepopulate or assign the four center pieces.
+    DON'T FORGET THAT WITH A CONSTRUCTOR FUNCTION, USE NEW! 
+    */
+   grid[3][3] = new Piece('white');
+   grid[3][4] = new Piece('black');
+   grid[4][3] = new Piece('black');
+   grid[4][4] = new Piece('white');
+
+   return grid;
 }
 
 /**
@@ -38,6 +60,17 @@ Board.prototype.hasMove = function (color) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+    //position =>
+    // Check if position has a value and it's equal to the value being passed in
+    let row = pos[0];
+    let col = pos[1];
+
+      console.log("Can you hear me out here");
+    if(grid[row][col] === color) {
+      console.log("Can you hear me inside here");
+      return true;
+    }
+    return false;
 };
 
 /**
