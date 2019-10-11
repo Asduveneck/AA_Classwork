@@ -142,29 +142,29 @@ function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
   // Board.DIRS  // This will be used when we CALL _positionsToFlip for the first time
 
   // Traveling in ONE DIRECTION ONLY. 
-  let positions_flipped = (piecesToFlip || [] );
-  let current_pos = pos;
-  if(!board.isValidPos(current_pos)) { // If NOT a valid position
-    return null;
-  }
-
   let next_row = pos[0] + dir[0];
   let next_col = pos[1] + dir[1];
   let next_pos = [next_row, next_col];
+  
+  // let current_pos = next_pos;
+  if(!board.isValidPos(next_pos)) { // If NOT a valid position
+    return null;
+  }
+
 
   if (!board.isOccupied(next_pos) ) { // If NOT OCCUPIED (no piece in that direction)
     // End of the board implies that the next piece is NOT occupied LOL
     return null;
   }
   // So we do have a next piece NOW! :)  
-  let next_piece = board[next_row][next_col];
+  let next_piece = board.getPiece(next_pos);
 
   // Check if new piece is the same color as ours. 
   if (next_piece.color === color) {
-    if (piecestoFlip.length === 2) {
+    if (piecesToFlip.length === 0) {
       return null;
     } else {
-      return piecestoFlip;
+      return piecesToFlip;
     }
   }
   /* No more edge cases. Our next direction we're going in is a different color
@@ -173,7 +173,7 @@ function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
     3. We call this method again recursively...
 */
 
-    next_piece.color = color;
+    // next_piece.color = color;
     piecesToFlip.push(next_pos);
     return _positionsToFlip(board, next_pos, color, dir, piecesToFlip);
 
@@ -200,6 +200,32 @@ Board.prototype.print = function () {
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+
+  let currBoard = this;
+  // return false if position is already occupied 
+  if(currBoard.isOccupied(pos)) {
+    return false;
+  }
+
+  // iterate through board dirs and return true if we can flip any pieces on the way
+
+  let c_row = pos[0];
+  let c_col = pos[1];
+
+  // forEach won't let you return early. Badgerballs!!!!
+  (Board.DIRS).forEach(dir => {
+    //let next_pos = [ (c_row + dir[0]), (c_col + dir[1]) ];
+    let captured = _positionsToFlip(currBoard, pos, color, dir, []); 
+          // Returns an array of all positions we flipped
+    // check something... if array.length > 0 ?
+    if(captured) { // if it's empty / null?
+      return true;
+    } 
+
+  });
+
+  return false;
+
 };
 
 /**
