@@ -12,12 +12,20 @@ function Piece (color) {
  * Returns the color opposite the current piece.
  */
 Piece.prototype.oppColor = function () {
+  let piece = this;
+
+  if (piece.color === "white") {
+    return "black";
+  } else if (piece.color === "black") {
+    return "white";
+  }
 };
 
 /**
  * Changes the piece's color to the opposite color.
  */
 Piece.prototype.flip = function () {
+  this.color = this.oppColor();
 };
 
 /**
