@@ -45,9 +45,12 @@ function askIfGreaterThan(el1, el2, callback) {
   // If yes, do: callback(true)
   // else: callback(false)
   reader.question(`Is ${el1} > ${el2}?`, (res)=>{
+    
     if (res === 'yes'){
+      // console.log(`you said: ${res}`);
       callback(true);
     } else if (res === 'no'){
+      // console.log(`you said: ${res}`);
       callback(false);
     } else {
       throw Error('yes or no only');
@@ -62,9 +65,38 @@ function askIfGreaterThan(el1, el2, callback) {
 //   }});
 
 function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop){
-  
-};
+  if(i < arr.length - 1) {
+    askIfGreaterThan(arr[i], arr[i+1], function(bool) { // This is our callback function starting from line 43 (askIfGreaterThan)
+      // performs a swap of elements in array if necessary
+      if (bool) {         // This is the response from 51/54, callback(t/f) which then 
+        // console.log(`we're inside the if(bool)`);
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        madeAnySwaps = true;
+      } 
+      // console.log(`${arr}`)
+      innerBubbleSortLoop(arr, i+=1, madeAnySwaps, outerBubbleSortLoop);
+
+    });
+  } else if(i === (arr.length - 1)) {
+   outerBubbleSortLoop(madeAnySwaps);
+  // console.log("We did it boys! We're in the outer bubble sort.");
+  }                               // END of our callback function from line 43
+}
+
+
 
 function absurdBubbleSort(arr, sortcompletionCallback) {
-  // We'll prompt
+
+  function outerBubbleSortLoop(madeAnySwaps) {
+    if(madeAnySwaps === true) {
+      innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop);
+    } else {
+      sortcompletionCallback(arr);
+    }
+  }
+  outerBubbleSortLoop(true);
 }
+absurdBubbleSort([3, 2, 1], function (arr) {
+  console.log("Sorted array: " + JSON.stringify(arr));
+  reader.close();
+});
