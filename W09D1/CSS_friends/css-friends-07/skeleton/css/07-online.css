@@ -1,1 +1,13 @@
 /* PHASE 7: Online */
+
+.online{
+  position: absolute; /* absolute vs relative  ?*/
+  top: 10px;
+  overflow: hidden;
+  transform: rotate(-45deg);
+  z-index: 1;
+  color: white;
+  background-color: magenta;
+  text-align: center;
+  /*translateX: 30; */
+}
