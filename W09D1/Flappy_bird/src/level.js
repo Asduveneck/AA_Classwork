@@ -8,3 +8,5 @@ export default class Level {
     ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
   }
 }
+
+function animate() {}
