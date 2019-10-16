@@ -1,0 +1,47 @@
+/* PHASE 9: Forms
+
+Reuse your .thumb class. Float the thumbnail and the form next to each other. Wrap your inputs and labels in container elements with an .input class. Wrap the button in a .submit container. Style them so you can reuse them. Pay special attention to the :focus and ':active' pseudo-classes.
+
+When you float a block element its width will be determined by its content, it will take up the minimal space necessary. In our case, when we float the thumbnail and the form next to each other, the form most likely will not fill out the full width of the parent container. To fix this you will want to set a manual width on the element. You'll have to do a little math to get this right.
+
+Bonus: CSS can do math too! Though not required today, you may use the
+
+*/
+.form-fieldset {
+  width: 85%;
+  height: 200px;
+  float: left;
+  padding: 19px;
+  margin: 0 0 0 20px;
+  border: 1px solid;
+  background-color: rgb(238, 238, 238);
+}
+
+.input > label {
+  display: block;
+  background-color: red;
+  /* border: 1px solid; */
+  padding: 5px;
+  margin: 5px;
+  width: 15%;
+}
+
+.input > label:last-child {
+  position: absolute;
+}
+
+.input > #form-title {
+  display: block;
+  background-color: aqua;
+  border: 1px solid;
+  padding: 10px; 
+  width: 50%
+}
+
+.input > #form-textarea {
+  display: block;
+  border: 1px solid;
+  padding: 10px; 
+  width: 70%;
+  height: 30%;
+}
