@@ -1,23 +1,35 @@
 class View {
   constructor(game, $el) {
     this.game = game;
-    this.grid = $el;
+    this.$el = $el;
+    this.setupBoard();
   }
 
-  bindEvents() {}
+  /*
 
-  makeMove($square) {}
+When a user clicks on a cell, call Game.prototype.playMove to register their move.
+  */
+  bindEvents() {
+    $("<ul>").on("click", "li", function(event) {
+      let clickedGrid = event.target;
+      /* Simple test: add text to `li` upon click */
+      
+    });
+  }
+
+  makeMove($square) {
+
+  }
 
   setupBoard() {
-    // this.grid = $('<ul>').html();
-    const rowIdx = this.grid.find('.row').length; 
-    const $row = $('<ul>').addClass('row'); //.addClass('.group');  // do we iuse both?
-    for (let i = 0; i < 4; i++) {
-      const square = $('<li>').addClass('square').attr('data-pos', [rowIdx, i]);
-
-    };
-
-  };
+    let that = this;
+    const $ul = $("<ul>");
+    this.$el.append($ul);
+    for (let i = 0; i < 9; i++) {
+      const $li = $("<li>");
+      $ul.append($li);
+    }
+  }
 }
 
 module.exports = View;

@@ -126,7 +126,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\"); // require appropriate file\nconst Game = __webpack_require__(/*! ../../solution/game.js */ \"../solution/game.js\"); // require appropriate file\n  const game = new Game();\n  const view = new View();\n\n  $(() => {\n    // Your code here for jQuery\n    \n\n\n\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\"); // require appropriate file\nconst Game = __webpack_require__(/*! ../../solution/game.js */ \"../solution/game.js\"); // require appropriate file\n  \n\n  $(() => {\n    // Your code here for jQuery\n    let container = $(\".ttt\");\n    const game = new Game();\n    const view = new View(game, container);\n\n\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -137,7 +137,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.grid = $el;\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    // this.grid = $('<ul>').html();\n    const rowIdx = this.grid.find('.row').length; \n    const $row = $('<ul>').addClass('row'); //.addClass('.group');  // do we iuse both?\n    for (let i = 0; i < 4; i++) {\n      const square = $('<li>').addClass('square').attr('data-pos', [rowIdx, i]);\n\n    };\n\n  };\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n    this.setupBoard();\n  }\n\n  /*\n\nWhen a user clicks on a cell, call Game.prototype.playMove to register their move.\n  */\n  bindEvents() {\n    $(\"<ul>\").on(\"click\", \"li\", function(event) {\n      let clickedGrid = event.target;\n      /* Simple test: add text to `li` upon click */\n      \n    });\n  }\n\n  makeMove($square) {\n\n  }\n\n  setupBoard() {\n    let that = this;\n    const $ul = $(\"<ul>\");\n    this.$el.append($ul);\n    for (let i = 0; i < 9; i++) {\n      const $li = $(\"<li>\");\n      $ul.append($li);\n    }\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 
