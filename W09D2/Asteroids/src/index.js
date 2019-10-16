@@ -3,7 +3,8 @@ console.log("Webpack is working")
 
 // File Requirements:
 const MovingObject = require("./moving_object.js");
-const Asteroid = require("./asteroid")
+const Asteroid = require("./asteroid");
+const Game = require("./game");
 
 
 
@@ -29,6 +30,9 @@ const ast2 = new Asteroid({
   vel: [10, 10]
 });
 
+const game1 = new Game({
+
+});
 
 
 // shove to window scope
@@ -37,6 +41,8 @@ window.MovingObject = MovingObject;
 window.ast = ast;
 window.Asteroid = Asteroid;
 window.ast2 = ast2;
+window.game1 = game1;
+
 
 // listener for DOMContentLoaded
 window.addEventListener('DOMContentLoaded', function(event) {
@@ -52,6 +58,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
   mo.draw(ctx);
   ast.draw(ctx);
   ast2.draw(ctx);
+
 });
 
 

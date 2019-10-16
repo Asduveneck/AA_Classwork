@@ -97,6 +97,17 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/mo
 
 /***/ }),
 
+/***/ "./src/game.js":
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("/*\nDIM_X, DIM_Y, and NUM_ASTEROIDS\n*/\n\n\nconst DEFAULT = {\n  COLOR: \"#b0e8e5\",\n  DIM_X: 9001,\n  DIM_Y: 9001,\n  NUM_ASTEROIDS: 3\n};\n\nfunction Game(options) {\n  asteroids = [];\n  options.COLOR = (options.COLOR || DEFAULT.COLOR)\n  options.DIM_X = (options.DIM_X || DEFAULT.DIM_X),\n  options.DIM_Y = (options.DIM_Y || DEFAULT.DIM_Y),\n  options.NUM_ASTEROIDS = (options.NUM_ASTEROIDS || DEFAULT.NUM_ASTEROIDS),\n  \n  this.addAsteroids();\n}\n\n\nGame.prototype.randomPosition = function () {\n  // Random X\n  // Random Y\n  let x_rand = Math.random * Game.Dim_X;\n  let y_rand = Math.random * Game.Dim_Y;\n  return [x_rand, y_rand];\n};\n\nGame.prototype.allObjects = function () {\n  return [].concat(this.asteroids);\n};\n\n\nGame.prototype.addAsteroids = function() {\n  // calls randomPosition \n  // stores position in Game.asteroids array\n  for(let i = 0; i <= Game.NUM_ASTEROIDS; i++) {\n    new_coord = Game.randomPosition(); \n    Game.asteroids.push(new_coord)\n  }\n};\n\n\nGame.prototype.draw = function(ctx) {\n  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)\n  ctx.fillStyle = Game.COLOR;\n  ctx.fill(0, 0, Game.DIM_X, Game.DIM_Y);\n  \n  this.allObjects().forEach(function(object) {\n    object.draw(ctx);\n  });\n\n};\nGame.prototype.moveObjects = function() {\n\n  this.allObjects().forEach(function(object) {\n    object.move();\n  });\n\n};\n\n module.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -104,7 +115,7 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/mo
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("console.log(\"Webpack is working\")\n//const ERROR_HERE\n\n// File Requirements:\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\")\n\n\n\n\n// Testing Ground\nconst mo = new MovingObject({\n  pos: [30, 30],\n  vel: [10, 10],\n  radius: 5,\n  color: \"#00FF00\"\n});\n\nconst ast = new Asteroid({\n  pos: [90, 90] \n  //everything else is given/implied/defaulted\n\n});\n\nconst ast2 = new Asteroid({\n  pos: [130, 130],\n  color: \"#2651de\", \n  radius: 20, \n  vel: [10, 10]\n});\n\n\n\n// shove to window scope\nwindow.mo = mo;\nwindow.MovingObject = MovingObject;\nwindow.ast = ast;\nwindow.Asteroid = Asteroid;\nwindow.ast2 = ast2;\n\n// listener for DOMContentLoaded\nwindow.addEventListener('DOMContentLoaded', function(event) {\n  // DOM: check if page is loaded\n  console.log('DOM IS HERE!')\n  const canvas = document.getElementById(\"game-canvas\"); // \n  // canvas.width = 500;\n  // canvas.height = 500;\n  const ctx = canvas.getContext(\"2d\");\n  window.ctx = ctx // For testing purposes ONLY. REMOVE LATER\n  // ctx we draw stuff\n  \n  mo.draw(ctx);\n  ast.draw(ctx);\n  ast2.draw(ctx);\n});\n\n\nconsole.log(mo)\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log(\"Webpack is working\")\n//const ERROR_HERE\n\n// File Requirements:\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\n\n\n\n// Testing Ground\nconst mo = new MovingObject({\n  pos: [30, 30],\n  vel: [10, 10],\n  radius: 5,\n  color: \"#00FF00\"\n});\n\nconst ast = new Asteroid({\n  pos: [90, 90] \n  //everything else is given/implied/defaulted\n\n});\n\nconst ast2 = new Asteroid({\n  pos: [130, 130],\n  color: \"#2651de\", \n  radius: 20, \n  vel: [10, 10]\n});\n\nconst game1 = new Game({\n\n});\n\n\n// shove to window scope\nwindow.mo = mo;\nwindow.MovingObject = MovingObject;\nwindow.ast = ast;\nwindow.Asteroid = Asteroid;\nwindow.ast2 = ast2;\nwindow.game1 = game1;\n\n\n// listener for DOMContentLoaded\nwindow.addEventListener('DOMContentLoaded', function(event) {\n  // DOM: check if page is loaded\n  console.log('DOM IS HERE!')\n  const canvas = document.getElementById(\"game-canvas\"); // \n  // canvas.width = 500;\n  // canvas.height = 500;\n  const ctx = canvas.getContext(\"2d\");\n  window.ctx = ctx // For testing purposes ONLY. REMOVE LATER\n  // ctx we draw stuff\n  \n  mo.draw(ctx);\n  ast.draw(ctx);\n  ast2.draw(ctx);\n\n});\n\n\nconsole.log(mo)\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
