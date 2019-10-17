@@ -16,3 +16,24 @@ li {
 li:hover {
   background-color: yellow;
 }
+
+li.occupied {
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
+/*  No customization just yet
+.x {
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
+.o {
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+}
+ 
+*/
