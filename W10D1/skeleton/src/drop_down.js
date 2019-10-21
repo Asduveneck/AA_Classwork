@@ -42,4 +42,25 @@ const attachDogLinks = function() {
 
 }
 
+const handleLeave = function() {
+  const dogNav = document.querySelector('.drop-down-dog-nav');
+  dogNav.addEventListener('mouseout', function() {
+    let dogLis = document.querySelectorAll('li');
+    dogLis.forEach(el => {
+      el.classList.add('dog-link'); 
+    })
+  })
+}
+const handleEnter = function() {
+  const dogNav = document.querySelector('.drop-down-dog-nav');
+  dogNav.addEventListener('mouseover', function() {
+    let dogLis = document.querySelectorAll('li');
+    dogLis.forEach(el => {
+      el.classList.remove('dog-link'); 
+    })
+  })
+}
+
 module.exports = attachDogLinks();
+module.exports = handleEnter();
+module.exports = handleLeave();
