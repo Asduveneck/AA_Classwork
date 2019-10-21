@@ -9,3 +9,37 @@ const dogs = {
   "French Bulldog": "https://www.akc.org/dog-breeds/french-bulldog/" 
 };
 
+const dogsArr = (Object.keys(dogs))
+
+
+const dogLinkCreator = function (breed) { // list = dogs // if we want more modularity
+  const dogLinks = [];
+  for(breed of dogsArr){
+    let newA = document.createElement('a');
+    newA.innerHTML = breed  // name
+    newA.href = dogs[breed] // link. Hopefully href works like this
+
+    let newLi = document.createElement('li');
+    newLi.className += "dog-link";
+    newLi.append(newA);
+
+    dogLinks.push(newLi); 
+  }
+
+  return dogLinks;
+}
+
+
+const attachDogLinks = function() {
+  let dogLinks = dogLinkCreator();
+
+  
+  const dogUl = document.querySelector('.drop-down-dog-list');
+
+  dogLinks.forEach(link => {
+    dogUl.append(link);
+  });
+
+}
+
+module.exports = attachDogLinks();

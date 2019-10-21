@@ -1,4 +1,5 @@
-const warmupFile = require('./warmup')
+// const warmupFile = require('./warmup')
+import {htmlGenerator} from './warmup';
 
 
 class Clock {
@@ -13,18 +14,21 @@ class Clock {
 
     // 3. Call printTime.
     this.printTime();
-
+    htmlGenerator(this.printTime(), clockElement);
     // 4. Schedule the tick at 1 second intervals.
     setInterval(this._tick.bind(this), 1000);
+    
   }
-
+  
   printTime() {
     // Format the time in HH:MM:SS
     const timeString = [this.hours, this.minutes, this.seconds].join(":");
-
-    return timeString;
+    
+    htmlGenerator(timeString, clockElement);
     // Use console.log to print it.
     // console.log(timeString);
+    return timeString;
+
   }
 
   _tick() {
@@ -58,13 +62,13 @@ class Clock {
 }
 
 
+const clockElement = document.querySelector('#clock');
 const clock = new Clock();
 
-const clockElement = document.querySelector('#clock');
-
-console.log(warmupFile.htmlGenerator);
-warmupFile.htmlGenerator(clock.printTime(), clockElement);
+// console.log(warmupFile.htmlGenerator);
+// warmupFile.htmlGenerator(clock.printTime(), clockElement);
 // warmupFile.htmlGenerator( new Clock() , clockElement);
 
 
-module.exports = Clock;
+// module.exports = Clock;
+export {Clock};
