@@ -1,0 +1,44 @@
+ body {
+   background-color: firebrick;
+ }
+
+ .clock-div {
+   background-color: black;
+   float: right;
+   display: inline-block;
+   padding: 20px;
+   border-radius: 15px;
+
+ }
+
+ h1 {
+   color: #7df5c5;
+ }
+ #clockTitle {
+   font-family: 'Nanum Gothic', sans-serif;
+   text-align: center;
+   font-size: 25px;
+ }
+
+ .clockVal {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+ }
+
+ .clockDate {
+   font-family: 'Bad Script', cursive;
+ }
+
+ /*
+Our fonts:
+
+<link href="https://fonts.googleapis.com/css?family=Bad+Script|Nanum+Gothic:800|Press+Start+2P&display=swap" rel="stylesheet">
+Specify in CSS
+Use the following CSS rules to specify these families:
+
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Bad Script', cursive;
+
+
+ */

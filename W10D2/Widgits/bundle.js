@@ -142,26 +142,45 @@ function (_React$Component) {
   _createClass(Clock, [{
     key: "tick",
     value: function tick() {
+      // updates the state via new Date
       this.setState({
         date: new Date()
       }); // creates a new setInterval timer because of componentDidMount every second
 
       console.log("hello");
-    }
+    } // because updates state, triggers our render
+    // formats time
+
   }, {
     key: "printTime",
     value: function printTime() {
       var currentdate = this.state.date;
       var hour = currentdate.getHours();
       var minute = currentdate.getMinutes();
-      var second = currentdate.getSeconds();
+      var second = currentdate.getSeconds(); // formats time:
+
       var time = "".concat(hour, ":").concat(minute, ":").concat(second);
       return time;
-    }
+    } // formats date
+
+  }, {
+    key: "printDate",
+    value: function printDate() {
+      var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      var months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+      var currentdate = this.state.date;
+      var currentmonth = months[currentdate.getMonth()];
+      var currentday = days[currentdate.getDay()];
+      var currentyear = currentdate.getFullYear();
+      var time = "Deadline: ".concat(currentday, " ").concat(currentmonth, " ").concat(currentdate.getDate(), " ").concat(currentyear);
+      return time;
+    } // once its rendered, invoke this 
+
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.interval = setInterval(this.tick, 1000);
+      this.interval = setInterval(this.tick, 1000); // takes a callback! Not an invoked function. This makes the thing actually tick (by setInterval)
+
       console.log(this.interval); //
       // this.setState({intervalCount: intervalCount + 1} );
       // console.log(this.state.intervalCount);
@@ -174,7 +193,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Clock "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.printTime()));
+      // calls our print methods with this new state.
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clock-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "clockTitle"
+      }, "\u0427\u0430\u0441\u044B "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "clockVal"
+      }, this.printTime()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "clockDate"
+      }, this.printDate()));
     }
   }]);
 
