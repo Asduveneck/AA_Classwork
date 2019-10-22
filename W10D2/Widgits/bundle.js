@@ -86,6 +86,105 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/clock.jsx":
+/*!****************************!*\
+  !*** ./frontend/clock.jsx ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Clock =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Clock, _React$Component);
+
+  function Clock(props) {
+    var _this;
+
+    _classCallCheck(this, Clock);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Clock).call(this, props));
+    _this.state = {
+      date: new Date() //,
+      // intervalCount: 0
+
+    };
+    _this.tick = _this.tick.bind(_assertThisInitialized(_this));
+    _this.printTime = _this.printTime.bind(_assertThisInitialized(_this)); // this.componentDidMount = this.componentDidMount.bind(this)
+
+    return _this;
+  }
+
+  _createClass(Clock, [{
+    key: "tick",
+    value: function tick() {
+      this.setState({
+        date: new Date()
+      }); // creates a new setInterval timer because of componentDidMount every second
+
+      console.log("hello");
+    }
+  }, {
+    key: "printTime",
+    value: function printTime() {
+      var currentdate = this.state.date;
+      var hour = currentdate.getHours();
+      var minute = currentdate.getMinutes();
+      var second = currentdate.getSeconds();
+      var time = "".concat(hour, ":").concat(minute, ":").concat(second);
+      return time;
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.interval = setInterval(this.tick, 1000);
+      console.log(this.interval); //
+      // this.setState({intervalCount: intervalCount + 1} );
+      // console.log(this.state.intervalCount);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.interval); // clear the timer to prevent creating a new timer each darn time.
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Clock "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.printTime()));
+    }
+  }]);
+
+  return Clock;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Clock);
+
+/***/ }),
+
 /***/ "./frontend/widgets.jsx":
 /*!******************************!*\
   !*** ./frontend/widgets.jsx ***!
@@ -99,11 +198,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _clock_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clock.jsx */ "./frontend/clock.jsx");
 
+
+ // Is this necessary?
 
 document.addEventListener("DOMContentLoaded", function () {
-  var root = document.getElementById("root");
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "React is working"), root);
+  var root = document.getElementById("root"); // ReactDOM.render( <h1>React is working</h1> , root );
+
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), root);
 });
 
 /***/ }),
