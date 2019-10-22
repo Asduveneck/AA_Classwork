@@ -29,15 +29,15 @@ h1 {
 }
 
 .drop-down-dog-nav {
-  display: flex;  
-  float: right;
+  /* display: flex;  
+  float: right; */
 } 
 
 .drop-down-dog-list li { 
   font-family: wingdings;
   color: #08435e;
   background-color: #99c8de;
-  display: flex;
+  /* display: flex; */
 
 } 
 
