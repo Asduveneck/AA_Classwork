@@ -17,6 +17,22 @@
   <link rel="stylesheet" href="css/10-posts.css" type="text/css">
   <link rel="stylesheet" href="css/11-icons.css" type="text/css">
   <link rel="stylesheet" href="css/12-modal.css" type="text/css">
+  <script src="../shared/js/jquery.js"></script>
+  <script>
+    $(function () {
+
+      $("body").on("click", ".js-modal-open", function (event) {
+        event.preventDefault();
+        $(".modal").addClass("is-open");
+      });
+
+      $("body").on("click", ".js-modal-close", function (event) {
+        event.preventDefault();
+        $(".modal").removeClass("is-open");
+      });
+
+    });
+  </script>
 </head>
 <body>
 
@@ -234,9 +250,20 @@
 
     <div class="modal">
       <section class="modal-screen"></section>
-      <section class="modal-form"></section>
+      <form class="modal-form">
+        <h1>piss</h1>  
+        <p>off.. please</p>
+        <div class="input">
+          <label for="form-ssn">
+            <input type="text" id="form-ssn" value="7095566573">
+          </label>
+        </div>
+        <div class="submit">
+          <button>give it to me</button>
+        </div>
+      </form>
 
-
+      Testing my love for you ~ (> UwU )>
 
 
     </div>
