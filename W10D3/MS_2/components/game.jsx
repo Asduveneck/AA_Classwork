@@ -44,7 +44,8 @@ class Game extends React.Component{
             <div>put dispenser here react_minesweeper
                 <br/>
 
-                {this._board(this.state.board, this.updateGame())}
+                {<Board testBoard={{board: this.state.board, updateGame: this.updateGame}} />}
+                
                 <br/>
                 {this._tile()}
             </div>
