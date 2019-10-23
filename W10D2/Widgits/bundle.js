@@ -213,6 +213,111 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/tabs.jsx":
+/*!***************************!*\
+  !*** ./frontend/tabs.jsx ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Tabs =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Tabs, _React$Component);
+
+  function Tabs(props) {
+    var _this;
+
+    _classCallCheck(this, Tabs);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, props)); // props are title and content. from root...?
+
+    _this.state = {
+      tabIdx: 0
+    };
+    _this.updateIndex = _this.updateIndex.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Tabs, [{
+    key: "updateIndex",
+    value: function updateIndex(idx) {
+      this.setState({
+        tabIdx: idx
+      });
+    } // original:
+
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " TABS TABS TABS FOR DAYS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "tabsContainer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Inside return's UL"), // props is an object that points to tabContent
+      // console.log(this.props.tabContent instanceof Array)
+      // console.log(this.props.tabContent.map)
+      // <h2>Inside return's ul's curly bois </h2>
+      this.props.tabContent.map(function (el, idx) {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "return ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " ", el.title, " "), "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", null, " ", el.content, "  "));
+        console.log("el title: ".concat(el.title, " || el content: ").concat(el.content, " || idx: ").concat(idx));
+      }))); // End of return
+    } // end of render()
+    // Broken even if we try to return only the div.
+    // render() {
+    //   return(
+    //     <div>
+    //       {  // props is an object that points to tabContent
+    //         // console.log(this.props.tabContent instanceof Array)
+    //         // console.log(this.props.tabContent.map)
+    //         this.props.tabContent.map( (el, idx) => {
+    //           <div>
+    //             {/* <header onClick= {this.updateIndex(idx)} >  */}
+    //               <h1> { el.title} </h1>  
+    //             {/* </header> */}
+    //             <article> 
+    //               {el.content} 
+    //             </article>
+    //           </div>
+    //           console.log(`el title: ${el.title} || el content: ${el.content} || idx: ${idx}`)
+    //         }
+    //         )
+    //       }
+    //     </div>
+    //   )
+    // }
+
+  }]);
+
+  return Tabs;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Tabs);
+
+/***/ }),
+
 /***/ "./frontend/widgets.jsx":
 /*!******************************!*\
   !*** ./frontend/widgets.jsx ***!
@@ -227,14 +332,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _clock_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clock.jsx */ "./frontend/clock.jsx");
+/* harmony import */ var _tabs_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabs.jsx */ "./frontend/tabs.jsx");
 
 
  // Is this necessary?
 
+ // Fill in tab title here...
+
+var tabContent = [// Now our props
+{
+  title: "一",
+  content: "FAKE NEWS BOIS"
+}, {
+  title: "二",
+  content: "Even more FAKE NEWS BOIS"
+}, {
+  title: "三",
+  content: "Associated Press & Reuters"
+}];
+
+function Root() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    tabContent: tabContent
+  }));
+}
+
+;
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root"); // ReactDOM.render( <h1>React is working</h1> , root );
 
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), root);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Root, null), root);
 });
 
 /***/ }),
