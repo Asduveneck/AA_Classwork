@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./board";
+import Tile from "./tile";
+
 import * as Minesweeper from "../minesweeper";
 
 class Game extends React.Component{
@@ -10,32 +12,13 @@ class Game extends React.Component{
             board: new Minesweeper.Board(10,9)
         };
         this.updateGame = this.updateGame.bind(this);
-        this._board = this._board.bind(this);
-        this._tile = this._tile.bind(this);
+
     }
     updateGame(){
         return "updateGame method";
     }
 
-    _board(prop1, prop2) {
-        // console.log(`prop1: ${prop1} prop2: ${prop2}`);
-        console.log(prop1.grid[0]);
-        return(
-            <div className="top-grid">
-                {prop1.grid.map((row, idx) => {
-                    // row.map((tile)=>{
-                    //     return this._tile();
-                    // });
-                    return this._tile();
-                })}
-            </div>
-        )
-        // debugger
-    }
 
-    _tile(){
-        return "T";
-    }
 
     render(){
 
@@ -45,9 +28,10 @@ class Game extends React.Component{
                 <br/>
 
                 {<Board testBoard={{board: this.state.board, updateGame: this.updateGame}} />}
-                
+
                 <br/>
-                {this._tile()}
+                { <Tile  /> }
+                 {/* no props passed in so blank above */}
             </div>
         );
     }
